@@ -7,10 +7,16 @@ import java.util.Properties;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import com.relevantcodes.extentreports.ExtentReports;
+import com.relevantcodes.extentreports.ExtentTest;
+
+
 public class TestBase {
 
-	public Properties configProp;
-	public WebDriver driver;
+	public static Properties configProp;
+	public static WebDriver driver;
+	public ExtentReports reports;
+	public ExtentTest test;
 
 	public TestBase()
 	{
@@ -37,5 +43,19 @@ public class TestBase {
 		}
 
 		driver.manage().window().maximize();
+	}
+	
+	public ExtentTest generateReport(String reportPath, String reportName)
+	{
+		reports = new ExtentReports(reportPath+"//"+reportName+"_"+System.currentTimeMillis()+".html");
+		test = reports.startTest(reportName);
+		
+		return test;
+	}
+	
+	public void closeReport()
+	{
+		reports.endTest(test);
+		reports.flush();
 	}
 }
