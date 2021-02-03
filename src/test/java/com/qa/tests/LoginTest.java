@@ -34,9 +34,9 @@ public class LoginTest extends TestBase {
 		try{
 			loginPage.launchUrl("http://automationpractice.com/index.php?controller=authentication&back=my-account");
 			test.log(LogStatus.PASS, "URL launch Successfully");
+			Assert.assertEquals(loginPage.verifyTitle(), "Login - My Store");
 			loginPage.enterCredentials("dasguptababi@gmail.com", "12345678");
 			test.log(LogStatus.PASS, "Login Successfully");
-			Assert.assertEquals(loginPage.verifyTitle(), "My account - My Store");
 		}
 		catch(Throwable e)
 		{

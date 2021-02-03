@@ -21,6 +21,11 @@ public class LoginPage extends TestBase {
 		PageFactory.initElements(driver, this);
 	}
 	
+	public String verifyTitle()
+	{
+		return driver.getTitle();
+	}
+	
 	public void launchUrl(String url)
 	{
 		driver.get(url);
@@ -31,11 +36,6 @@ public class LoginPage extends TestBase {
 		UserName.sendKeys(username);
 		Password.sendKeys(password);
 		submitButton.click();
-	}
-	
-	public String verifyTitle()
-	{
-		return driver.getTitle();
 	}
 	
 	public void quitBrowser()
